@@ -1,6 +1,10 @@
--- This file is part of CyrHUD
+-- This file is part of CyrHUD (Console port).
 --
--- (C) 2016 Scott Yeskie (Sasky)
+-- Original CyrHUD addon by Sasky, @aldericon, Baertram, and @Masteroshi430.
+-- Console port: trims keyboard-only code paths and swaps LibAddonMenu-2 for
+-- LibHarvensAddonSettings. See CyrHUDConsole.addon for the full manifest.
+--
+-- (C) 2016 Scott Yeskie (Sasky) and the CyrHUD authors above.
 --
 -- This program is free software; you can redistribute it and/or modify
 -- it under the terms of the GNU General Public License as published by
@@ -19,7 +23,7 @@ CyrHUD = CyrHUD or {}
 CyrHUD.addonVars = {}
 CyrHUD.addonVars.version	= "2026.05.17"
 CyrHUD.addonVars.name 		= "CyrHUD"
-CyrHUD.addonVars.author 	= "Sasky, |c4779ce@aldericon|r, |c3CB371@Masteroshi430|r"
+CyrHUD.addonVars.author 	= "Sasky, |c4779ce@aldericon|r, Baertram, |c3CB371@Masteroshi430|r — console port"
 CyrHUD.addonVars.website	= "http://www.esoui.com/downloads/fileinfo.php?id=559#info"
 -- CyrHUD.yourKills = 0
 -- CyrHUD.yourDeaths = 0
@@ -212,14 +216,16 @@ function CyrHUD.eventAttackChange(_, keepID, battlegroundContext, underAttack)
 	end
 
 	
+	-- Console port note: `gateOpen` was declared local inside the if-block below in
+	-- the PC source, which left it nil at the read site below. Hoisted out so the
+	-- gate/bridge/milegate impassable path actually triggers self:add(keepID).
+	local gateOpen = false
 	if GetKeepType(keepID) == KEEPTYPE_ARTIFACT_GATE or GetKeepType(keepID) == KEEPTYPE_BRIDGE or GetKeepType(keepID) == KEEPTYPE_MILEGATE then
-	
 		local pinType,_,_ = GetKeepPinInfo(keepID, battlegroundContext)
-		local gateOpen = false
 		if pinType == MAP_PIN_TYPE_ARTIFACT_GATE_OPEN_ALDMERI_DOMINION or pinType == MAP_PIN_TYPE_ARTIFACT_GATE_OPEN_DAGGERFALL_COVENANT or pinType == MAP_PIN_TYPE_ARTIFACT_GATE_OPEN_EBONHEART_PACT then
 			 gateOpen = true
 		elseif pinType == MAP_PIN_TYPE_KEEP_BRIDGE_IMPASSABLE or pinType == MAP_PIN_TYPE_KEEP_MILEGATE_IMPASSABLE or pinType == MAP_PIN_TYPE_KEEP_MILEGATE_CENTER_DESTROYED then
-		    gateOpen = true -- yep, it should be keepImpassable = true but the code is cleaner/has less lines like that   
+		    gateOpen = true -- yep, it should be keepImpassable = true but the code is cleaner/has less lines like that
 		end
 	end
 

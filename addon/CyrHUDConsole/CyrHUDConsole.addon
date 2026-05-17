@@ -1,7 +1,8 @@
 ## APIVersion: 101049
 ## Title: CyrHUD (Console)
 ## Version: 2026.05.17
-## Author: Sasky, |c4779ce@aldericon|r, |c3CB371@Masteroshi430|r — console port
+## Author: Sasky, |c4779ce@aldericon|r, Baertram, |c3CB371@Masteroshi430|r — console port
+## Description: Console port of the CyrHUD PvP HUD addon. Original work by Sasky, @aldericon, Baertram, and @Masteroshi430.
 ## SavedVariables: CyrHUDConsole_SavedVars
 ## DependsOn: LibHarvensAddonSettings>=20107
 

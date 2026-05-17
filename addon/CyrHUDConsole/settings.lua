@@ -1,5 +1,9 @@
--- CyrHUDConsole settings.lua — Harvens panel
--- Replaces the PC menu.lua (LibAddonMenu-2) since LAM doesn't exist on console.
+-- CyrHUDConsole settings.lua — Harvens panel.
+--
+-- This file is new in the console port. It replaces the PC menu.lua
+-- (LibAddonMenu-2), since LAM doesn't exist on console.
+--
+-- Original CyrHUD addon by Sasky, @aldericon, Baertram, and @Masteroshi430.
 
 CyrHUD = CyrHUD or {}
 
