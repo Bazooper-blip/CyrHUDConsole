@@ -579,7 +579,7 @@ function CyrHUD:printAll()
     end
 
     --Fix since auto-resize doesn't seem to work well
-    self.ui:SetHeight(math.max(i*35,70))
+    self.ui:SetHeight(math.max(i*42,70))
 	
 	CyrHUD.entryCount = i-2
   CyrHUD.rowDisplayedCount = rowDislpayedCount
