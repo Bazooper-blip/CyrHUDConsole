@@ -91,8 +91,8 @@ CyrHUD.icons["defSiege"] = "/esoui/art/icons/ava_siege_weapon_002.dds"
 CyrHUD.icons["scrollAD"] = "/esoui/art/campaign/overview_scrollicon_aldmeri.dds"
 CyrHUD.icons["scrollEP"] = "/esoui/art/campaign/overview_scrollicon_ebonheart.dds"
 CyrHUD.icons["scrollDC"] = "/esoui/art/campaign/overview_scrollicon_daggefall.dds"
-CyrHUD.icons["ConnectedKeep"] = "/CyrHUD/textures/keep_connected_to_fast_travel_network.dds" 
-CyrHUD.icons["DisconnectedKeep"] = "/CyrHUD/textures/keep_disconnected_from_fast_travel_network.dds"
+CyrHUD.icons["ConnectedKeep"] = "/CyrHUDConsole/textures/keep_connected_to_fast_travel_network.dds" 
+CyrHUD.icons["DisconnectedKeep"] = "/CyrHUDConsole/textures/keep_disconnected_from_fast_travel_network.dds"
 CyrHUD.icons["arrow"] = "/esoui/art/unitattributevisualizer/attributebar_arrow.dds"
 
 CyrHUD.icons[ALLIANCE_ALDMERI_DOMINION] = "EsoUI/Art/AvA/avaCaptureBar_allianceBadge_aldmeri.dds"
@@ -113,36 +113,36 @@ CyrHUD.info["gauge"][0][2] = {}
 CyrHUD.info["gauge"][0][3] = {}
 
 CyrHUD.info["gauge"][1][0] = {}
-CyrHUD.info["gauge"][1][0]["100"] = "/CyrHUD/textures/gauge_AD_full.dds"
-CyrHUD.info["gauge"][1][0]["83.333"] = "/CyrHUD/textures/gauge_AD_full.dds"
-CyrHUD.info["gauge"][1][0]["66.666"] = "/CyrHUD/textures/gauge_AD_near_full.dds"
-CyrHUD.info["gauge"][1][0]["51"] = "/CyrHUD/textures/gauge_AD_above.dds"
-CyrHUD.info["gauge"][1][0]["49"] = "/CyrHUD/textures/gauge_AD_below.dds"
-CyrHUD.info["gauge"][1][0]["33.333"] = "/CyrHUD/textures/gauge_AD_below.dds"
-CyrHUD.info["gauge"][1][0]["16.666"] = "/CyrHUD/textures/gauge_AD_near_empty.dds"
+CyrHUD.info["gauge"][1][0]["100"] = "/CyrHUDConsole/textures/gauge_AD_full.dds"
+CyrHUD.info["gauge"][1][0]["83.333"] = "/CyrHUDConsole/textures/gauge_AD_full.dds"
+CyrHUD.info["gauge"][1][0]["66.666"] = "/CyrHUDConsole/textures/gauge_AD_near_full.dds"
+CyrHUD.info["gauge"][1][0]["51"] = "/CyrHUDConsole/textures/gauge_AD_above.dds"
+CyrHUD.info["gauge"][1][0]["49"] = "/CyrHUDConsole/textures/gauge_AD_below.dds"
+CyrHUD.info["gauge"][1][0]["33.333"] = "/CyrHUDConsole/textures/gauge_AD_below.dds"
+CyrHUD.info["gauge"][1][0]["16.666"] = "/CyrHUDConsole/textures/gauge_AD_near_empty.dds"
 
 
 CyrHUD.info["gauge"][2][0] = {}
-CyrHUD.info["gauge"][2][0]["100"] = "/CyrHUD/textures/gauge_EP_full.dds"
-CyrHUD.info["gauge"][2][0]["83.333"] = "/CyrHUD/textures/gauge_EP_full.dds"
-CyrHUD.info["gauge"][2][0]["66.666"] = "/CyrHUD/textures/gauge_EP_near_full.dds"
-CyrHUD.info["gauge"][2][0]["51"] = "/CyrHUD/textures/gauge_EP_above.dds"
-CyrHUD.info["gauge"][2][0]["49"] = "/CyrHUD/textures/gauge_EP_below.dds"
-CyrHUD.info["gauge"][2][0]["33.333"] = "/CyrHUD/textures/gauge_EP_below.dds"
-CyrHUD.info["gauge"][2][0]["16.666"] = "/CyrHUD/textures/gauge_EP_near_empty.dds"
+CyrHUD.info["gauge"][2][0]["100"] = "/CyrHUDConsole/textures/gauge_EP_full.dds"
+CyrHUD.info["gauge"][2][0]["83.333"] = "/CyrHUDConsole/textures/gauge_EP_full.dds"
+CyrHUD.info["gauge"][2][0]["66.666"] = "/CyrHUDConsole/textures/gauge_EP_near_full.dds"
+CyrHUD.info["gauge"][2][0]["51"] = "/CyrHUDConsole/textures/gauge_EP_above.dds"
+CyrHUD.info["gauge"][2][0]["49"] = "/CyrHUDConsole/textures/gauge_EP_below.dds"
+CyrHUD.info["gauge"][2][0]["33.333"] = "/CyrHUDConsole/textures/gauge_EP_below.dds"
+CyrHUD.info["gauge"][2][0]["16.666"] = "/CyrHUDConsole/textures/gauge_EP_near_empty.dds"
 
 
 CyrHUD.info["gauge"][3][0] = {}
-CyrHUD.info["gauge"][3][0]["100"] = "/CyrHUD/textures/gauge_DC_full.dds"
-CyrHUD.info["gauge"][3][0]["83.333"] = "/CyrHUD/textures/gauge_DC_full.dds"
-CyrHUD.info["gauge"][3][0]["66.666"] = "/CyrHUD/textures/gauge_DC_near_full.dds"
-CyrHUD.info["gauge"][3][0]["51"] = "/CyrHUD/textures/gauge_DC_above.dds"
-CyrHUD.info["gauge"][3][0]["49"] = "/CyrHUD/textures/gauge_DC_below.dds"
-CyrHUD.info["gauge"][3][0]["33.333"] = "/CyrHUD/textures/gauge_DC_below.dds"
-CyrHUD.info["gauge"][3][0]["16.666"] = "/CyrHUD/textures/gauge_DC_near_empty.dds"
+CyrHUD.info["gauge"][3][0]["100"] = "/CyrHUDConsole/textures/gauge_DC_full.dds"
+CyrHUD.info["gauge"][3][0]["83.333"] = "/CyrHUDConsole/textures/gauge_DC_full.dds"
+CyrHUD.info["gauge"][3][0]["66.666"] = "/CyrHUDConsole/textures/gauge_DC_near_full.dds"
+CyrHUD.info["gauge"][3][0]["51"] = "/CyrHUDConsole/textures/gauge_DC_above.dds"
+CyrHUD.info["gauge"][3][0]["49"] = "/CyrHUDConsole/textures/gauge_DC_below.dds"
+CyrHUD.info["gauge"][3][0]["33.333"] = "/CyrHUDConsole/textures/gauge_DC_below.dds"
+CyrHUD.info["gauge"][3][0]["16.666"] = "/CyrHUDConsole/textures/gauge_DC_near_empty.dds"
 
 
-CyrHUD.info["gauge"][0][0]["100"] = "/CyrHUD/textures/gauge_neutral.dds"
+CyrHUD.info["gauge"][0][0]["100"] = "/CyrHUDConsole/textures/gauge_neutral.dds"
 
 
 --For no icon fallback

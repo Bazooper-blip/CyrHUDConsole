@@ -17,7 +17,7 @@
 
 CyrHUD = CyrHUD or {}
 CyrHUD.addonVars = {}
-CyrHUD.addonVars.version	= "2026.04.12"
+CyrHUD.addonVars.version	= "2026.05.17"
 CyrHUD.addonVars.name 		= "CyrHUD"
 CyrHUD.addonVars.author 	= "Sasky, |c4779ce@aldericon|r, |c3CB371@Masteroshi430|r"
 CyrHUD.addonVars.website	= "http://www.esoui.com/downloads/fileinfo.php?id=559#info"
