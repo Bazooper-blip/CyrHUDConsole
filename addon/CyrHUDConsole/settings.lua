@@ -21,25 +21,12 @@ function CyrHUD.registerSettings()
     CyrHUD._settingsRegistered = true
 
     local LHAS = LibHarvensAddonSettings
-    d("CyrHUD.settings: LHAS=" .. tostring(LHAS))
     if not LHAS then
         d("|cFF0000[CyrHUDConsole] LibHarvensAddonSettings not loaded — settings panel unavailable")
         return
     end
 
-    local ok, err = pcall(function()
-        CyrHUD._buildSettingsPanel(LHAS)
-    end)
-    if not ok then
-        d("|cFF0000[CyrHUDConsole] settings panel build FAILED: " .. tostring(err))
-    else
-        d("CyrHUD.settings: panel built ok")
-    end
-end
-
-function CyrHUD._buildSettingsPanel(LHAS)
     local panel = LHAS:AddAddon("CyrHUD", { allowDefaults = true })
-    d("CyrHUD.settings: panel=" .. tostring(panel))
     if not panel then return end
 
     -- Subtitle/byline in the gamepad settings header (imitates Votan's pattern).
