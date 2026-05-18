@@ -212,19 +212,19 @@ function CyrHUD.Battle:configureLabel(label)
 	label:positionControl(L_SCROLL, 50, 50, -6, -6)
 
     --Defensive siege count
-    label:positionControl(L_DEF_SIEGE, 30, 30, 274, 5)
-	label:positionControl(L_DEF_SIEGE_ICON, 30, 30, 260, 0)
+    label:positionControl(L_DEF_SIEGE, 30, 30, 254, 5)
+	label:positionControl(L_DEF_SIEGE_ICON, 30, 30, 240, 0)
 	label:getControl(L_DEF_SIEGE_ICON):SetTexture(CyrHUD.icons["defSiege"])
 	label:getControl(L_DEF_SIEGE_ICON):SetColor(CyrHUD.info[4].color:UnpackRGBA())
 
     --Attacker siege count
-    label:positionControl(L_ATT_SIEGE, 30, 30, 240, 5)
-	label:positionControl(L_ATT_SIEGE_ICON, 30, 30, 230, 0)
+    label:positionControl(L_ATT_SIEGE, 30, 30, 220, 5)
+	label:positionControl(L_ATT_SIEGE_ICON, 30, 30, 210, 0)
 	label:getControl(L_ATT_SIEGE_ICON):SetTexture(CyrHUD.icons["offSiege"])
 	label:getControl(L_ATT_SIEGE_ICON):SetColor(CyrHUD.info[4].color:UnpackRGBA())
 
     --Time
-    label:positionControl(L_TIME, 60, 30, 310, 5)
+    label:positionControl(L_TIME, 90, 30, 285, 5)
 end
 
 function CyrHUD.SetFlagStateData(eventCode, keepId, objectiveId, battlegroundContext, objectiveName, objectiveType, objectiveControlEvent, state, holdingAlliance, attackingAlliance, pinType)
