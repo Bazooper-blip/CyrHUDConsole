@@ -43,9 +43,12 @@ CyrHUD.ANCHOR_PRESETS = {
 }
 
 function CyrHUD.applyAnchorPreset()
-    if not CyrHUD.ui then return end
+    if not CyrHUD.ui then d("CyrHUD: applyAnchorPreset SKIP (no ui)"); return end
     local key = CyrHUD.cfg and CyrHUD.cfg.position or "TOP_RIGHT"
     local preset = CyrHUD.ANCHOR_PRESETS[key] or CyrHUD.ANCHOR_PRESETS.TOP_RIGHT
+    d("CyrHUD: applyAnchorPreset key=" .. tostring(key)
+        .. " self=" .. tostring(preset and preset.self)
+        .. " anchor=" .. tostring(preset and preset.anchor))
     CyrHUD.ui:ClearAnchors()
     CyrHUD.ui:SetAnchor(preset.self, GuiRoot, preset.anchor, preset.x, preset.y)
 end
@@ -837,11 +840,14 @@ end
 CyrHUD.visible = false
 
 function CyrHUD:init()
+    d("CyrHUD: init start")
     --Init UI
     self.ui:SetHidden(false)
+    d("CyrHUD: init ui shown")
 
     --Populate data
     self:refresh()
+    d("CyrHUD: init refresh done")
 
     --Add events
     EVENT_MANAGER:RegisterForUpdate(CyrHUD.addonVars.name .. "KeepCheck", 5000, function()
@@ -934,9 +940,11 @@ function CyrHUD:init()
 
     EVENT_MANAGER:RegisterForEvent(CyrHUD.addonVars.name, EVENT_ACTION_LAYER_POPPED, self.actionLayerChange)
     EVENT_MANAGER:RegisterForEvent(CyrHUD.addonVars.name, EVENT_ACTION_LAYER_PUSHED, self.actionLayerChange)
+    d("CyrHUD: init done")
 end
 
 function CyrHUD:refresh()
+    d("CyrHUD: refresh start")
     --Get initial scan
     self.battles = {}
 	self.MovingObjectives = {}
@@ -961,17 +969,22 @@ function CyrHUD:refresh()
 	end
 	
     self.campaign = GetCurrentCampaignId()
+    d("CyrHUD: refresh campaign=" .. tostring(self.campaign))
 
     --Could separate this with a data refresh eventually, but just do a hard reset for now
     self.statusBars = {}
     table.insert(self.statusBars, self.ScoringBar())
+    d("CyrHUD: refresh ScoringBar ok")
 	if GetAssignedCampaignId() == self.campaign or IsInImperialCity() then
 	   table.insert(self.statusBars, 2, self.RankingBar())
+	   d("CyrHUD: refresh RankingBar ok")
 	end
     self:scanKeeps()
+    d("CyrHUD: refresh scanKeeps ok")
 
     --Force update on status bar
     self:reconfigureLabels()
+    d("CyrHUD: refresh done")
 end
 
 
@@ -1012,6 +1025,7 @@ end
 --Called once. Handles controls, etc.
 function CyrHUD.addonInit()
     local self = CyrHUD
+    d("CyrHUD: addonInit start")
 
     --Init saved variables
     local def = {
@@ -1025,25 +1039,38 @@ function CyrHUD.addonInit()
     }
 
     self.cfg = ZO_SavedVars:NewAccountWide("CyrHUDConsole_SavedVars", 1.0, "config", def)
+    d("CyrHUD: cfg ok (position=" .. tostring(self.cfg and self.cfg.position) .. ")")
 
     --Create UI (console: no mouse, no drag)
     self.ui = WINDOW_MANAGER:CreateTopLevelWindow("CyrHUD_UI")
+    d("CyrHUD: ui created (width=" .. tostring(CyrHUD.width) .. ")")
     self.ui:SetWidth(CyrHUD.width)
     self.ui:SetClampedToScreen(true)
+    d("CyrHUD: ui sized")
 
     CyrHUD.applyAnchorPreset()
+    d("CyrHUD: anchor ok")
 
     --Create settings menu (console: Harvens — see settings.lua)
     if CyrHUD.registerSettings then
+        d("CyrHUD: registerSettings start")
         CyrHUD.registerSettings()
+        d("CyrHUD: registerSettings ok")
+    else
+        d("CyrHUD: registerSettings MISSING")
     end
     self.initLAM = true  -- name kept so playerInit() below still no-ops on re-entry
+    d("CyrHUD: addonInit done")
 end
 
 function CyrHUD.playerInit()
     local self = CyrHUD
+    d("CyrHUD: playerInit fired")
 
+    -- Safety fallback: if for some reason ADD_ON_LOADED didn't fire addonInit, do it
+    -- now. Normally addonInit has already run by the time PLAYER_ACTIVATED fires.
     if not self.initLAM then
+        d("CyrHUD: playerInit fallback-running addonInit (ADD_ON_LOADED apparently missed)")
         self.addonInit()
     end
 
@@ -1055,16 +1082,35 @@ function CyrHUD.playerInit()
 		   self:deinit()
 		   return
 		end
-		
+
 		if self.visible then
-            if CyrHUD.campaignID ~= GetCurrentCampaignId() then self:refresh() end 
+            if CyrHUD.campaignID ~= GetCurrentCampaignId() then self:refresh() end
         else
             self:init()
         end
-	    CyrHUD.campaignID = GetCurrentCampaignId()	
+	    CyrHUD.campaignID = GetCurrentCampaignId()
     elseif self.visible then
         self:deinit()
     end
 end
 
+------------------------------------------------------------------------
+-- Event registration
+------------------------------------------------------------------------
+-- Pattern matches Votan's Minimap and other modern LHAS-using addons:
+-- one-shot setup (savedvars, UI, settings panel) fires on EVENT_ADD_ON_LOADED;
+-- per-character lifecycle fires on EVENT_PLAYER_ACTIVATED.
+-- The addon's loaded name is its .addon file basename — "CyrHUDConsole" — which
+-- is distinct from `CyrHUD.addonVars.name` ("CyrHUD"), the shared Lua namespace.
+
+local ADDON_LOADED_NAME = "CyrHUDConsole"
+
+local function OnAddonLoaded(event, name)
+    if name ~= ADDON_LOADED_NAME then return end
+    EVENT_MANAGER:UnregisterForEvent(CyrHUD.addonVars.name .. "-load", EVENT_ADD_ON_LOADED)
+    d("CyrHUD: ADD_ON_LOADED fired for " .. name)
+    CyrHUD.addonInit()
+end
+
+EVENT_MANAGER:RegisterForEvent(CyrHUD.addonVars.name .. "-load", EVENT_ADD_ON_LOADED, OnAddonLoaded)
 EVENT_MANAGER:RegisterForEvent(CyrHUD.addonVars.name .. "-init", EVENT_PLAYER_ACTIVATED, CyrHUD.playerInit)
