@@ -39,7 +39,7 @@ colors.black = ZO_ColorDef:New(0, 0, 0, 1)
 colors.yellow = ZO_ColorDef:New(GetInterfaceColor(INTERFACE_COLOR_TYPE_ALLIANCE, ALLIANCE_ALDMERI_DOMINION)) -- AD color
 colors.green = ZO_ColorDef:New("2FC821") --  47, 200, 33, 1
 
-CyrHUD.width = 320
+CyrHUD.width = 400
 
 CyrHUD.info = {}
 CyrHUD.info.underAttack = "/esoui/art/mappins/ava_attackburst_64.dds"

@@ -42,8 +42,8 @@ function Label.new()
 
     --Main control/backdrop
     self.main = WINDOW_MANAGER:CreateControl(self.entryName .. "main", CyrHUD_UI, CT_BACKDROP)
-    self.main:SetDimensions(CyrHUD.width, 42)
-    self.main:SetAnchor(TOPLEFT, CyrHUD_UI, TOPLEFT, 0, self.num*42-5)
+    self.main:SetDimensions(CyrHUD.width, 50)
+    self.main:SetAnchor(TOPLEFT, CyrHUD_UI, TOPLEFT, 0, self.num*50-5)
     self.main:SetCenterColor(CyrHUD.info.defaultBGColor:UnpackRGBA())
     self.main:SetEdgeColor(CyrHUD.info.invisColor:UnpackRGBA())
 
