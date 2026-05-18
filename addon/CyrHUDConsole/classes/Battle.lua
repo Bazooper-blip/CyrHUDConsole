@@ -181,16 +181,16 @@ function CyrHUD.Battle:configureLabel(label)
     ua:SetTexture(CyrHUD.info.underAttack)
 
     --Objective name
-    label:positionControl(L_NAME, 150, 30, 35, 5)
-	
+    label:positionControl(L_NAME, 180, 30, 35, 5)
+
 	-- Animated arrow
     label:positionControl(L_ARROW, 20, 20, 35, 7)
-    label:getControl(L_ARROW):SetTexture(CyrHUD.icons["arrow"]) 
+    label:getControl(L_ARROW):SetTexture(CyrHUD.icons["arrow"])
 	label:getControl(L_ARROW):SetTransformRotationZ(math.rad(180))
 	label:getControl(L_ARROW):SetAlpha(0)
-	
+
 	--Holder name
-	label:positionControl(L_HOLDER, 150, 30, 35, 20)
+	label:positionControl(L_HOLDER, 180, 30, 35, 20)
 
 	
 	--Keep resources around keep
@@ -212,19 +212,19 @@ function CyrHUD.Battle:configureLabel(label)
 	label:positionControl(L_SCROLL, 50, 50, -6, -6)
 
     --Defensive siege count
-    label:positionControl(L_DEF_SIEGE, 30, 30, 224, 5) 
-	label:positionControl(L_DEF_SIEGE_ICON, 30, 30, 210, 0)
+    label:positionControl(L_DEF_SIEGE, 30, 30, 274, 5)
+	label:positionControl(L_DEF_SIEGE_ICON, 30, 30, 260, 0)
 	label:getControl(L_DEF_SIEGE_ICON):SetTexture(CyrHUD.icons["defSiege"])
 	label:getControl(L_DEF_SIEGE_ICON):SetColor(CyrHUD.info[4].color:UnpackRGBA())
 
     --Attacker siege count
-    label:positionControl(L_ATT_SIEGE, 30, 30, 190, 5)
-	label:positionControl(L_ATT_SIEGE_ICON, 30, 30, 180, 0)
+    label:positionControl(L_ATT_SIEGE, 30, 30, 240, 5)
+	label:positionControl(L_ATT_SIEGE_ICON, 30, 30, 230, 0)
 	label:getControl(L_ATT_SIEGE_ICON):SetTexture(CyrHUD.icons["offSiege"])
 	label:getControl(L_ATT_SIEGE_ICON):SetColor(CyrHUD.info[4].color:UnpackRGBA())
-	
+
     --Time
-    label:positionControl(L_TIME, 35, 30, 245, 5) 
+    label:positionControl(L_TIME, 60, 30, 310, 5)
 end
 
 function CyrHUD.SetFlagStateData(eventCode, keepId, objectiveId, battlegroundContext, objectiveName, objectiveType, objectiveControlEvent, state, holdingAlliance, attackingAlliance, pinType)
