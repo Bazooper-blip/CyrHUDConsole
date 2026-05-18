@@ -25,6 +25,15 @@ CyrHUD.addonVars.version	= "2026.05.17"
 CyrHUD.addonVars.name 		= "CyrHUD"
 CyrHUD.addonVars.author 	= "Sasky, |c4779ce@aldericon|r, Baertram, |c3CB371@Masteroshi430|r — console port"
 CyrHUD.addonVars.website	= "http://www.esoui.com/downloads/fileinfo.php?id=559#info"
+
+-- Console doesn't ship the PC-only deprecation aliases for the renamed AvA
+-- objective functions (see libs/esoui/esoui/ingame/addoncompatibilityaliases/
+-- pc/addoncompatibilityaliases_pc.lua:273 in the API mirror), so the upstream
+-- name resolves to nil on console and crashes scanKeeps. Mirror the PC alias
+-- here so unchanged upstream code in CyrHUD.lua / classes/Battle.lua works.
+if not GetAvAObjectiveKeysByIndex and GetObjectiveIdsForIndex then
+    GetAvAObjectiveKeysByIndex = GetObjectiveIdsForIndex
+end
 -- CyrHUD.yourKills = 0
 -- CyrHUD.yourDeaths = 0
 
